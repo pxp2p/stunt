@@ -4,16 +4,27 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 // ==========================================
 // NOTIFICACIÓN TEMPORAL (Toast de Éxito)
 // ==========================================
+// ==========================================================================
+// FUNCIÓN PARA NOTIFICACIÓN TEMPORAL (Toast - CONECTADO CON TU CSS)
+// ==========================================================================
 function mostrarNotificacion(mensaje) {
-    const notificacion = document.createElement("div");
-    notificacion.textContent = mensaje;
-    notificacion.classList.add("toast-notificacion");
-    document.body.appendChild(notificacion);
+  // 1. Creamos el contenedor del cartelito
+  const notificacion = document.createElement("div");
+  notificacion.textContent = mensaje;
+  notificacion.classList.add("toast-notificacion");
+  document.body.appendChild(notificacion);
 
-    setTimeout(() => {
-        notificacion.classList.add("oculto");
-        setTimeout(() => notificacion.remove(), 500);
-    }, 2500);
+  // 2. Le damos un milisegundo de respiro para que el navegador aplique el cambio
+  setTimeout(() => {
+    // Agrega la clase '.mostrar' de tu CSS definitivo para que suba fluidamente
+    notificacion.classList.add("mostrar"); 
+  }, 10);
+
+  // 3. A los 2.5 segundos le quita la clase para que baje, y a los 3 segundos lo elimina por completo del HTML
+  setTimeout(() => {
+    notificacion.classList.remove("mostrar");
+    setTimeout(() => notificacion.remove(), 350); // Borrado físico definitivo
+  }, 2500);
 }
 
 // ==========================================
