@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Finalizar Compra</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header id="header-fin">
+        <nav class="navbar">
+            <a href="index.html">Inicio</a>
+            <a href="prod.html">Productos</a>
+        </nav>
+        <h1>Finalizar Compra</h1>
+    </header>
+    <h1>Completa tus datos para el pedido</h1>
+    
+    <!-- Contenedor para mostrar el resumen del carrito -->
+    <div id="resumen-pedido"></div>
+
+    <form id="formulario-pedido" class="form-premium">
+    <!-- Grupo de Nombre y Apellido -->
+    <div class="input-grupo">
+        <label for="nombre-cliente">Nombre y Apellido:</label>
+        <input type="text" id="nombre-cliente" placeholder="Ej: Juan Pérez" required>
+    </div>
+
+    <!-- Grupo de Dirección -->
+    <div class="input-grupo">
+        <label for="direccion-cliente">Dirección de entrega:</label>
+        <input type="text" id="direccion-cliente" placeholder="Ej: Av. Siempreviva 742" required>
+    </div>
+
+    <!-- Botón de Envío -->
+    <button type="submit" class="btn-enviar-wa">
+        Enviar pedido por WhatsApp
+    </button>
+</form>
+
+
+    <script src="js.js"></script>
+</body>
+
+</html>

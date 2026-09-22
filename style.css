@@ -1,0 +1,1508 @@
+/* ==========================================================================
+   1. CONFIGURACIÓN BASE Y VARIABLES
+   ========================================================================== */
+
+:root {
+  --rosa: #ff007f;
+  --rosa-neon: #ff007b;
+  --violeta: #8b2cff;
+  --azul: #005cff;
+  --azul-francia: #0052ff;
+  --amarillo: #ffc400;
+  --verde: #12b981;
+
+  --negro: #111318;
+  --negro-suave: #252936;
+  --negro-asfalto: #11141d;
+
+  --fondo: #f5f6fa;
+  --fondo-web: #f5f6fa;
+  --fondo-tarjeta: #ffffff;
+
+  --blanco: #ffffff;
+
+  --texto: #151821;
+  --texto-principal: #151821;
+  --texto-secundario: #697386;
+
+  --borde: #e7e9ef;
+  --borde-suave: #e7e9ef;
+}
+
+/* ==========================================================================
+   2. RESET
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(255, 0, 127, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 25%,
+      rgba(0, 92, 255, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(139, 44, 255, 0.07),
+      transparent 30%
+    ),
+    var(--fondo);
+  color: var(--texto);
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   3. GRAFFITI DE FONDO
+   ========================================================================== */
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
+body::before {
+  width: 230px;
+  height: 230px;
+  top: 18%;
+  left: -120px;
+  background: rgba(255, 0, 127, 0.08);
+  animation: graffitiRosa 10s ease-in-out infinite alternate;
+}
+
+body::after {
+  width: 260px;
+  height: 260px;
+  right: -130px;
+  bottom: 12%;
+  background: rgba(0, 92, 255, 0.08);
+  animation: graffitiAzul 12s ease-in-out infinite alternate;
+}
+
+@keyframes graffitiRosa {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(40px, 70px) rotate(25deg);
+  }
+}
+
+@keyframes graffitiAzul {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-40px, -50px) rotate(-25deg);
+  }
+}
+
+/* ==========================================================================
+   4. HEADER
+   ========================================================================== */
+
+header {
+  position: relative;
+  padding: 28px 16px 32px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid var(--borde);
+  box-shadow: 0 20px 30px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    var(--rosa),
+    var(--violeta),
+    var(--azul),
+    var(--amarillo),
+    var(--verde)
+  );
+}
+
+/* ==========================================================================
+   5. NAVBAR
+   ========================================================================== */
+
+.navbar {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.navbar a {
+  display: inline-block;
+  padding: 7px 11px;
+  color: var(--negro);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 8px;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+  animation: navEntrada 0.7s ease both;
+}
+
+.navbar a:hover {
+  color: var(--blanco);
+  background: var(--negro);
+  transform: translateY(-2px) rotate(-1deg);
+}
+
+@keyframes navEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   6. TÍTULO
+   ========================================================================== */
+
+header h1 {
+  position: relative;
+  display: inline-block;
+  color: var(--negro);
+  font-size: 28px;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  animation: tituloEntrada 0.9s ease both;
+}
+
+header h1::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 80px;
+  height: 30px;
+  right: -20px;
+  bottom: -8px;
+  background: var(--amarillo);
+  border-radius: 50%;
+  transform: rotate(-8deg);
+  animation: tituloNeon 4s ease-in-out infinite alternate;
+}
+
+.txt-rosa {
+  color: var(--rosa);
+}
+
+.txt-azul {
+  color: var(--azul);
+}
+
+.txt-amarillo {
+  color: var(--amarillo);
+}
+
+@keyframes tituloEntrada {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) rotate(-4deg) scale(0.92);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
+}
+
+@keyframes tituloNeon {
+  0% {
+    transform: rotate(-8deg) scale(1);
+  }
+
+  100% {
+    transform: rotate(6deg) scale(1.12);
+  }
+}
+
+/* ==========================================================================
+   7. CONTENIDO PRINCIPAL
+   ========================================================================== */
+
+#main-index {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* ==========================================================================
+   8. LISTADO DE PRODUCTOS
+   FIRST MOBILE
+   ========================================================================== */
+
+.prod-list {
+  width: 100%;
+  display: grid;
+
+  /* Mercado Libre: varios productos por fila */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* ==========================================================================
+   9. TARJETA DE PRODUCTO
+   ========================================================================== */
+
+.producto-card {
+  --color-card: var(--rosa);
+  --delay-card: 0s;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+
+  margin: 0;
+  padding: 12px;
+
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 15px;
+
+  text-align: center;
+  overflow: hidden;
+  text-wrap: wrap;
+
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.07),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+
+  animation: tarjetaFlotando 5s ease-in-out infinite;
+  animation-delay: var(--delay-card);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.producto-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: var(--color-card);
+}
+
+.producto-card::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+
+  width: 85px;
+  height: 85px;
+
+  right: -40px;
+  bottom: -40px;
+
+  background: var(--color-card);
+  opacity: 0.08;
+
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.producto-card:nth-child(4n + 1) {
+  --color-card: var(--rosa);
+  --delay-card: 0s;
+}
+
+.producto-card:nth-child(4n + 2) {
+  --color-card: var(--azul);
+  --delay-card: 0.3s;
+}
+
+.producto-card:nth-child(4n + 3) {
+  --color-card: var(--violeta);
+  --delay-card: 0.6s;
+}
+
+.producto-card:nth-child(4n + 4) {
+  --color-card: var(--amarillo);
+  --delay-card: 0.9s;
+}
+
+@keyframes tarjetaFlotando {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* ==========================================================================
+   10. IMAGEN DEL PRODUCTO + EFECTO 3D
+   ========================================================================== */
+
+.producto-card img {
+  --img-rx: 0deg;
+  --img-ry: 0deg;
+  --img-z: 10px;
+  --img-scale: 1;
+
+  position: relative;
+  z-index: 2;
+
+  width: 80%;
+  max-width: 210px;
+  height: 125px;
+
+  object-fit: contain;
+  margin-bottom: 12px;
+
+  background: linear-gradient(
+    145deg,
+    #f8f9fc,
+    #eef1f6
+  );
+
+  border-radius: 12px;
+  border: 1px solid #edf0f5;
+
+  transform:
+    perspective(800px)
+    translateZ(var(--img-z))
+    rotateX(var(--img-rx))
+    rotateY(var(--img-ry))
+    scale(var(--img-scale));
+
+  transform-style: preserve-3d;
+
+  filter:
+    drop-shadow(0 14px 8px rgba(15, 23, 42, 0.12))
+    drop-shadow(0 4px 4px rgba(0, 0, 0, 0.06));
+
+  animation:
+    imagenRespira 4s ease-in-out infinite,
+    imagenBalancea 6s ease-in-out infinite alternate;
+
+  transition:
+    filter 0.35s ease,
+    transform 0.35s ease;
+}
+
+@keyframes imagenRespira {
+  0%,
+  100% {
+    transform:
+      perspective(800px)
+      translateZ(var(--img-z))
+      rotateX(var(--img-rx))
+      rotateY(var(--img-ry))
+      scale(var(--img-scale));
+  }
+
+  50% {
+    transform:
+      perspective(800px)
+      translateY(-3px)
+      translateZ(var(--img-z))
+      rotateX(var(--img-rx))
+      rotateY(var(--img-ry))
+      scale(calc(var(--img-scale) * 1.025));
+  }
+}
+
+@keyframes imagenBalancea {
+  0% {
+    rotate: -1deg;
+  }
+
+  100% {
+    rotate: 1deg;
+  }
+}
+
+/* ==========================================================================
+   11. TEXTOS DEL PRODUCTO
+   ========================================================================== */
+
+.producto-card h2 {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+
+  margin-bottom: 6px;
+
+  color: var(--texto-principal);
+  font-size: 0.92rem;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.producto-card p {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+
+  margin-bottom: 10px;
+
+  color: var(--texto-secundario);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.color-text-verde {
+  color: var(--verde) !important;
+}
+
+.color-text-rosa {
+  color: var(--rosa) !important;
+}
+
+.color-text-azul {
+  color: var(--azul) !important;
+}
+
+.color-text-violeta {
+  color: var(--violeta) !important;
+}
+
+.color-text-amarillo {
+  color: #d69f00 !important;
+}
+
+.color-text-naranja {
+  color: #ff6600 !important;
+}
+
+.color-text-negro {
+  color: var(--negro) !important;
+}
+
+.color-text-blanco {
+  color: #a1b1c7 !important;
+}
+
+/* ==========================================================================
+   12. BOTONES
+   ========================================================================== */
+
+.btn-comprar,
+.btn-ver-mas {
+  position: relative;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 40px;
+
+  border: 0;
+  border-radius: 9px;
+
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.1s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-comprar {
+  margin-top: auto;
+
+  color: var(--blanco);
+  background: var(--negro);
+}
+
+.btn-comprar:hover {
+  background: var(--rosa);
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px color-mix(
+      in srgb,
+      var(--rosa) 25%,
+      transparent
+    );
+}
+
+.btn-ver-mas {
+  margin-top: 7px;
+
+  color: var(--negro);
+  background: #eef0f5;
+}
+
+.btn-ver-mas:hover {
+  color: var(--blanco);
+  background: var(--azul);
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px color-mix(
+      in srgb,
+      var(--azul) 25%,
+      transparent
+    );
+}
+
+/* ==========================================================================
+   13. DETALLE DEL PRODUCTO
+   ========================================================================== */
+
+#detalle-producto-container {
+  width: 100%;
+}
+
+.producto-card-detalle {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 850px;
+
+  margin: 0 auto;
+  padding: 22px;
+
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.08);
+
+  overflow: hidden;
+}
+
+.producto-card-detalle img {
+  width: 100%;
+  max-width: 420px;
+  height: 300px;
+
+  object-fit: contain;
+  margin-bottom: 20px;
+
+  background: #f8fafc;
+  border: 1px solid #edf0f5;
+  border-radius: 16px;
+}
+
+/* ==========================================================================
+   14. SELECTORES DE COLORES
+   ========================================================================== */
+
+.contenedor-selectores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  gap: 10px;
+
+  width: 100%;
+  max-width: 280px;
+
+  margin: 20px 0;
+}
+
+.circulo-color {
+  width: 34px;
+  height: 34px;
+
+  flex: 0 0 auto;
+
+  border-radius: 50%;
+  border: 3px solid var(--blanco) !important;
+
+  box-shadow:
+    0 0 0 1px #cbd5e1,
+    0 2px 6px rgba(0, 0, 0, 0.08);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.circulo-color:hover {
+  transform: scale(1.12);
+}
+
+.circulo-color.activo {
+  transform: scale(1.22);
+
+  box-shadow:
+    0 0 0 2px var(--negro),
+    0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* MAPEO DE COLORES */
+
+.circulo-color.color-rojo {
+  background-color: #ff0044 !important;
+}
+
+.circulo-color.color-azul {
+  background-color: #0055ff !important;
+}
+
+.circulo-color.color-negro {
+  background-color: #111318 !important;
+}
+
+.circulo-color.color-blanco {
+  background-color: #ffffff !important;
+}
+
+.circulo-color.color-verde {
+  background-color: #12b981 !important;
+}
+
+.circulo-color.color-amarillo {
+  background-color: #ffcc00 !important;
+}
+
+.circulo-color.color-violeta {
+  background-color: #8b2cff !important;
+}
+
+.circulo-color.color-naranja {
+  background-color: #ff6600 !important;
+}
+
+.circulo-color.color-verde-lima {
+  background-color: #ccff00 !important;
+}
+
+.circulo-color.color-rosa {
+  background-color: #ff007f !important;
+}
+
+.color-indicador {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 12px;
+
+  color: var(--texto-secundario);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.btn-volver {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 44px;
+
+  margin-top: 15px;
+
+  color: var(--blanco);
+  background: var(--negro);
+
+  border: 0;
+  border-radius: 10px;
+
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.btn-volver:hover {
+  background: var(--violeta);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   15. CARRITO FLOTANTE
+   ========================================================================== */
+
+#btn-flotante-carrito {
+  position: fixed;
+  z-index: 1000;
+
+  right: 16px;
+  bottom: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  width: auto;
+  height: auto;
+
+  padding: 12px 20px;
+
+  color: var(--verde);
+  background: var(--negro);
+
+  border: 2px solid var(--verde);
+  border-radius: 50px;
+
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.2);
+
+  animation:
+    pulsoFlotante 3s ease-in-out infinite;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+#btn-flotante-carrito:active {
+  transform: scale(0.95);
+}
+
+#btn-flotante-carrito .contador-burbuja {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 22px;
+  height: 22px;
+
+  padding: 0 6px;
+
+  color: var(--blanco);
+  background: var(--rosa);
+
+  border-radius: 999px;
+
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+@keyframes pulsoFlotante {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+    box-shadow:
+      0 14px 32px rgba(18, 185, 129, 0.25);
+  }
+}
+
+/* ==========================================================================
+   16. CHECKOUT
+   ========================================================================== */
+
+.lista-checkout-premium {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+
+  width: 100%;
+
+  margin: 20px 0;
+}
+
+.item-checkout-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  width: 100%;
+
+  padding: 20px;
+
+  background: var(--blanco);
+
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+
+  box-shadow:
+    0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+.item-info {
+  text-align: left;
+  padding-right: 40px;
+}
+
+.item-titulo {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: var(--texto-principal);
+
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
+.item-tag-color {
+  display: inline-block;
+
+  padding: 5px 12px;
+
+  background: #f0f2f6;
+
+  border-radius: 8px;
+
+  font-size: 1.25rem;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.item-controles-precio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin-top: 10px;
+  padding-top: 12px;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.item-controles {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 4px;
+
+  background: #f0f2f6;
+
+  border-radius: 30px;
+}
+
+.btn-cant {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  color: var(--negro);
+  background: var(--blanco);
+
+  border: 0;
+  border-radius: 50%;
+
+  font-size: 1.4rem;
+  font-weight: 900;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.08);
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-cant:active {
+  transform: scale(0.9);
+}
+
+.item-cantidad-num {
+  min-width: 24px;
+
+  color: var(--texto-principal);
+
+  font-size: 1.15rem;
+  font-weight: 900;
+
+  text-align: center;
+}
+
+.item-subtotal {
+  color: var(--texto-principal);
+
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+.btn-eliminar-item {
+  position: absolute;
+
+  top: 16px;
+  right: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px;
+
+  border: 0;
+  border-radius: 10px;
+
+  color: #dc2626;
+  background: #fff0f2;
+
+  font-size: 1.2rem;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-eliminar-item:active {
+  transform: scale(0.85);
+}
+
+.total-pago {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin: 30px 0 15px;
+  padding: 20px 4px 0;
+
+  border-top: 2px dashed var(--borde);
+
+  color: var(--texto-principal);
+
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+.total-pago strong {
+  color: var(--azul-francia);
+  font-size: 2rem;
+}
+
+/* ==========================================================================
+   17. FORMULARIO
+   ========================================================================== */
+
+.form-premium {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  width: 100%;
+  max-width: 700px;
+
+  margin: 25px auto 0;
+}
+
+.input-grupo {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  text-align: left;
+}
+
+.input-grupo label {
+  color: var(--texto-principal);
+
+  font-size: 0.95rem;
+  font-weight: 900;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.input-grupo input,
+.input-grupo select,
+.input-grupo textarea {
+  width: 100%;
+
+  padding: 16px;
+
+  color: var(--texto-principal);
+  background: var(--blanco);
+
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+
+  outline: none;
+
+  font-family: inherit;
+  font-size: 1.1rem;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input-grupo input:focus,
+.input-grupo select:focus,
+.input-grupo textarea:focus {
+  border-color: var(--azul);
+
+  box-shadow:
+    0 0 0 3px rgba(0, 92, 255, 0.15);
+}
+
+.btn-enviar-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 56px;
+
+  margin-top: 10px;
+
+  color: var(--blanco);
+  background: #111;
+
+  border: 0;
+  border-radius: 14px;
+
+  font-size: 1.05rem;
+  font-weight: 900;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 15px rgba(0, 0, 0, 0.1);
+
+  transition:
+    transform 0.1s ease,
+    background 0.25s ease;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-enviar-wa:hover {
+  background: var(--verde);
+
+  box-shadow:
+    0 10px 22px rgba(18, 185, 129, 0.25);
+}
+
+.btn-enviar-wa:active {
+  transform: scale(0.96);
+}
+
+/* ==========================================================================
+   18. TOAST
+   ========================================================================== */
+
+.toast-notificacion {
+  position: fixed;
+  z-index: 2000;
+
+  left: 50%;
+  bottom: 25px;
+
+  width: calc(100% - 30px);
+  max-width: 420px;
+
+  padding: 14px 18px;
+
+  color: var(--blanco);
+  background: var(--negro);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+
+  text-align: center;
+
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.25);
+
+  transform: translate(-50%, 120px);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.toast-notificacion.mostrar {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   19. MINIATURAS DESTACADAS
+   ========================================================================== */
+
+.seccion-miniaturas {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+#grid-miniaturas-destacadas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.miniatura-item-home {
+  position: relative;
+
+  width: 80%;
+
+  overflow: hidden;
+
+  border-radius: 0 0 20px 20px;
+
+  box-shadow:
+    0 7px 18px rgba(15, 23, 42, 0.06);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  cursor: pointer;
+}
+
+.miniatura-item-home:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 25px rgba(15, 23, 42, 0.1);
+}
+
+.miniatura-item-home img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: 0 0 20px 20px;
+
+  box-shadow:
+    0 25px 30px rgba(15, 23, 42, 0.12);
+
+  transition: transform 0.35s ease;
+}
+
+.miniatura-item-home:hover img {
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   20. ELEMENTOS FINALES
+   ========================================================================== */
+
+#header-fin {
+  margin-bottom: 60px;
+}
+
+/* ==========================================================================
+   21. TABLET
+   ========================================================================== */
+
+@media (min-width: 480px) {
+  .prod-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .producto-card {
+    padding: 15px;
+  }
+
+  .producto-card img {
+    height: 140px;
+  }
+
+  .producto-card h2 {
+    font-size: 0.98rem;
+  }
+
+  .producto-card p {
+    font-size: 0.82rem;
+  }
+
+  .btn-comprar,
+  .btn-ver-mas {
+    font-size: 0.74rem;
+  }
+
+  #grid-miniaturas-destacadas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .miniatura-item-home {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   22. TABLET GRANDE
+   ========================================================================== */
+
+@media (min-width: 650px) {
+  .item-checkout-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 70px 20px 20px;
+  }
+
+  .item-controles-precio {
+    width: auto;
+
+    justify-content: flex-end;
+
+    gap: 40px;
+
+    margin-top: 0;
+    padding-top: 0;
+
+    border-top: none;
+  }
+
+  .btn-eliminar-item {
+    top: 50%;
+    right: 20px;
+
+    background: transparent;
+
+    transform: translateY(-50%);
+  }
+
+  .btn-eliminar-item:active {
+    transform: translateY(-50%) scale(0.85);
+  }
+}
+
+/* ==========================================================================
+   23. DESKTOP
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  header {
+    padding: 32px 25px 38px;
+  }
+
+  main {
+    padding: 40px 24px 70px;
+  }
+
+  .prod-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .producto-card {
+    padding: 18px;
+  }
+
+  .producto-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+      0 20px 40px rgba(15, 23, 42, 0.12),
+      0 5px 12px rgba(15, 23, 42, 0.05);
+  }
+
+  .producto-card:hover img {
+    --img-rx: 4deg;
+    --img-ry: -7deg;
+    --img-z: 35px;
+    --img-scale: 1.04;
+
+    filter:
+      drop-shadow(0 25px 14px rgba(15, 23, 42, 0.2))
+      drop-shadow(0 8px 8px rgba(139, 44, 255, 0.12));
+  }
+
+  .producto-card img {
+    height: 155px;
+  }
+
+  .producto-card h2 {
+    font-size: 1.05rem;
+  }
+
+  .producto-card p {
+    font-size: 0.9rem;
+  }
+
+  .btn-comprar,
+  .btn-ver-mas {
+    font-size: 0.82rem;
+  }
+
+  .producto-card-detalle {
+    padding: 30px;
+  }
+
+  .item-checkout-card {
+    grid-template-columns: 90px 1fr auto;
+    align-items: center;
+  }
+
+  #grid-miniaturas-destacadas {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .miniatura-item-home img {
+    height: 170px;
+    object-fit: cover;
+  }
+}
+
+/* ==========================================================================
+   24. DESKTOP GRANDE
+   ========================================================================== */
+
+@media (min-width: 1024px) {
+  .prod-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .producto-card {
+    padding: 20px;
+  }
+
+  .producto-card img {
+    max-width: 210px;
+  }
+
+  header h1 {
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
+  }
+}
+
+/* ==========================================================================
+   25. ACCESIBILIDAD / MENOS ANIMACIONES
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

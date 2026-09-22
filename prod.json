@@ -1,0 +1,44 @@
+[
+  
+  {
+    "id": "100",
+    "nombre": "Cubre Rayos",
+    "descripcion": "Cubre rayos duros para ruedas",
+    "precio": 7500,
+    "imagen": "prod/100.png",
+    "colores": ["rojo", "azul", "negro", "blanco", "verde","verde lima", "amarillo", "rosa", "violeta", "naranja"]
+  },
+  {
+    "id": "101",
+    "nombre": "Puños de Goma básicos",
+    "descripcion": "Puños de goma para manubrios",
+    "precio": 3000,
+    "imagen": "prod/101.png",
+    "colores": ["rojo", "azul", "verde", "amarillo", "violeta", "naranja", "rosa"]
+  },
+  {
+    "id": "102",
+    "nombre": "Pedalines de aluminio",
+    "descripcion": "Pedalines de aluminio para bicicletas",
+    "precio": 5000,
+    "imagen": "prod/102.png",
+    "colores": ["rojo", "azul", "negro", "blanco", "amarillo", "naranja"]
+  },
+  {
+    "id": "103",
+    "nombre": "Cubre levas de freno",
+    "descripcion": "Cubre levas de freno de bicicleta",
+    "precio": 3000,
+    "imagen": "prod/103.png",
+    "colores": ["rojo", "azul", "negro", "blanco", "rosa", "violeta", "gris"]
+  },
+  {
+    "id":"104",
+    "nombre":"Stem corto",
+    "descripcion": "Stem corto de acero para manubrio ",
+    "precio": 20000,
+    "imagen": "prod/104.png",
+    "colores": ["negro"]
+  }
+  
+]
