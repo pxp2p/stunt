@@ -699,111 +699,123 @@ main,
 }
 
 
-/* =========================
-   12. DETALLE PRODUCTO
-   ========================= */
+/* ==========================================================================
+   12. DETALLE DEL PRODUCTO - SELECTORES DE COLORES (BLINDADO)
+   ========================================================================== */
 
 #detalle-producto-container {
-
   width: 100%;
-  max-width: 850px;
-
-  margin:
-    20px auto 0;
 }
-
 
 .producto-card-detalle {
-
   position: relative;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 22px;
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
   overflow: hidden;
-
-  padding:
-    16px;
-
-  border:
-    1px solid var(--borde);
-
-  border-radius:
-    var(--radio-lg);
-
-  background:
-    rgba(255, 255, 255, 0.97);
-
-  box-shadow:
-    var(--sombra-card);
 }
-
-
-.producto-card-detalle::before {
-
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-
-  left: 0;
-  right: 0;
-
-  height: 6px;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--rojo),
-      var(--azul)
-    );
-}
-
 
 .producto-card-detalle img {
-
   width: 100%;
-
-  max-height: 450px;
-
-  margin:
-    5px auto 20px;
-
+  max-width: 420px;
+  height: 300px;
   object-fit: contain;
-
-  border-radius:
-    var(--radio-md);
-
-  background:
-    #f5f6f8;
+  margin-bottom: 20px;
+  background: #f8fafc;
+  border: 1px solid #edf0f5;
+  border-radius: 16px;
 }
 
-
-.producto-card-detalle h2 {
-
-  margin-bottom:
-    8px;
-
-  font-size:
-    clamp(
-      1.5rem,
-      6vw,
-      2.3rem
-    );
-
-  line-height:
-    1;
-
-  letter-spacing:
-    -0.04em;
+/* CONTENEDOR DE CÍRCULOS: Ahora sí controla el espacio en celulares */
+.contenedor-selectores {
+  display: flex;
+  flex-wrap: wrap;       /* Obliga a los círculos a bajar si no entran en la fila */
+  justify-content: center;
+  gap: 12px;             /* Separación prolija entre cada esferita */
+  width: 100%;
+  max-width: 290px;      /* Medida ideal para que se acomoden en bloques limpios en celular */
+  margin: 20px auto;
 }
 
+/* El círculo interactivo de color (Blindado) */
+.circulo-color {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  
+  /* CAMBIO CLAVE: Usamos bordes limpios y sombras externas para que el color real explote */
+  border: 3px solid var(--blanco) !important; 
+  box-shadow: 0 0 0 1px #cbd5e1, 0 3px 8px rgba(15, 23, 42, 0.12);
+  
+  transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-.producto-card-detalle p {
+.circulo-color:hover {
+  transform: scale(1.12);
+}
 
-  color:
-    var(--texto-suave);
+/* El círculo que el usuario tiene seleccionado actualmente se expande */
+.circulo-color.activo {
+  transform: scale(1.22) !important;
+  border-color: var(--blanco) !important;
+  box-shadow: 0 0 0 2px var(--negro), 0 4px 10px rgba(0,0,0,0.2) !important;
+}
 
-  line-height:
-    1.65;
+/* ==========================================================================
+   MAPEO DE COLORES CON MÁXIMA PRIORIDAD PARA REEMPLAZAR TU CAPTURA
+   ========================================================================== */
+.circulo-color.color-rojo         { background: #ff0044 !important; background-color: #ff0044 !important; }
+.circulo-color.color-azul         { background: #0055ff !important; background-color: #0055ff !important; }
+.circulo-color.color-negro        { background: #111318 !important; background-color: #111318 !important; }
+.circulo-color.color-blanco       { background: #ffffff !important; background-color: #ffffff !important; }
+.circulo-color.color-verde        { background: #12b981 !important; background-color: #12b981 !important; }
+.circulo-color.color-amarillo     { background: #ffcc00 !important; background-color: #ffcc00 !important; }
+.circulo-color.color-violeta      { background: #8b2cff !important; background-color: #8b2cff !important; }
+.circulo-color.color-naranja      { background: #ff6600 !important; background-color: #ff6600 !important; }
+.circulo-color.color-verde-lima   { background: #ccff00 !important; background-color: #ccff00 !important; }
+.circulo-color.color-rosa         { background: #ff007f !important; background-color: #ff007f !important; }
+.circulo-color.color-gris         { background: #64748b !important; background-color: #64748b !important; }
+
+.color-indicador {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--texto-secundario);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.btn-volver {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 15px;
+  color: var(--blanco);
+  background: var(--negro);
+  border: 0;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.btn-volver:hover {
+  background: var(--violeta);
+  transform: translateY(-2px);
 }
 
 
@@ -2384,4 +2396,4 @@ select:focus-visible {
     transition-duration:
       0.01ms !important;
   }
-}
+/* } */
