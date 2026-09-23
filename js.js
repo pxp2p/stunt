@@ -140,7 +140,7 @@ if (contenedorDetalle) {
           <p class="precio-detalle"><strong>$${producto.precio}</strong></p>
           
           <button class="btn-comprar" 
-                  onclick="agregarAlCarritoInteligente('${producto.id}', '${producto.nombre}', ${producto.precio})">
+                  onclick="agregarAlCarritoInteligente('${producto.id}', '${producto.nombre}', ${producto.precio}, '${producto.imagen}')">
             Agregar al Carrito
           </button>
           
@@ -164,25 +164,32 @@ function cambiarColorSeleccionado(elementoClickado) {
 }
 
 // LÓGICA DE AGREGADO CON VERIFICACIÓN DE CANTIDADES
-function agregarAlCarritoInteligente(productoId, nombre, precio) {
+// AGREGAMOS 'imagen' a los parámetros que recibe la función:
+function agregarAlCarritoInteligente(productoId, nombre, precio, imagen) {
     const circuloActivo = document.querySelector(".circulo-color.activo");
-    // Si no hay círculos de color activos, dejamos uno por defecto para prevenir fallos
     const colorElegido = circuloActivo ? circuloActivo.getAttribute("data-color") : "estándar";
 
-    // Buscamos si ya existe el mismo artículo con el mismo color exacto en el carrito
     const productoExistente = carrito.find(item => item.id === productoId && item.color === colorElegido);
 
     if (productoExistente) {
-        productoExistente.cantidad += 1; // Si ya estaba, sumamos uno a su cantidad
+        productoExistente.cantidad += 1; 
     } else {
-        // Si es nuevo, lo creamos con cantidad inicial en 1
-        carrito.push({ id: productoId, nombre: nombre, color: colorElegido, precio: precio, cantidad: 1 });
+        // CORRECCIÓN: Ahora guardamos también la propiedad 'imagen' en el LocalStorage
+        carrito.push({ 
+            id: productoId, 
+            nombre: nombre, 
+            color: colorElegido, 
+            precio: precio, 
+            imagen: imagen, // <--- GUARDAMOS LA RUTA DE LA FOTO REAL
+            cantidad: 1 
+        });
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
     mostrarNotificacion(`¡${nombre} (${colorElegido}) sumado al carrito!`);
     actualizarBotonFlotante();
 }
+
 
 // ==========================================
 // PANTALLA 3: FORMULARIO Y CHECKOUT (fin.html)
@@ -211,13 +218,21 @@ const colorMinuscula = item.color.toLowerCase().replace(" ", "-");
 
 HTMLResumen += `
   <div class="item-checkout-card">
+  
     <button type="button" class="btn-eliminar-item" onclick="eliminarItemDelCarrito(${index})">🗑️</button>
     
-    <div class="item-info">
-      <span class="item-titulo">${item.nombre}</span>
-      <!-- CAMBIO AQUÍ: Usamos colorMinuscula para la clase -->
-      <span class="item-tag-color color-text-${colorMinuscula}">${item.color}</span>
+    <!-- AGREGA ESTA LÍNEA AQUÍ ABAJO PARA LA IMAGEN -->
+    
+    
+    <section class="item-info">
+    <div class="item-info-img">
+    <img src="${item.imagen}" alt="${item.nombre}" class="item-checkout-img">
     </div>
+      <div class="item-info-text">
+      <span class="item-titulo">${item.nombre}</span>
+      <span class="item-tag-color color-text-${colorMinuscula}">${item.color}</span>
+      </div>
+    </section>
     
     <div class="item-controles-precio">
       <div class="item-controles">

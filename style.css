@@ -284,7 +284,7 @@ nav button {
   background:
     var(--blanco);
 
-  font-size: 0.82rem;
+  font-size: 1.2rem;
   font-weight: 750;
 
   transition:
@@ -330,7 +330,7 @@ header h1 {
 
   margin: 0 auto;
 
-  color: var(--gradiente-principal);
+  color: var(--verde-2);
 
   font-size:
     clamp(
@@ -1125,6 +1125,9 @@ main,
 }
 
 .item-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: left;
   padding-right: 50px; /* Más margen para que no toque el tacho */
 }
@@ -1287,6 +1290,35 @@ main,
   font-size:
     1.25rem;
 }
+/* Miniatura de imagen adentro de la tarjeta de checkout */
+.item-checkout-img {
+  display: flex;
+  width: 10px;
+  object-fit: contain;
+  background: #f8fafc;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 4px;
+  
+}
+
+/* En celulares, hacemos que la foto se alinee de forma prolija arriba al lado del título */
+@media (max-width: 650px) {
+  .item-checkout-card {
+    /* Cambiamos a Grid para organizar la foto de manera excelente */
+    grid-template-columns: 60px 2fr;
+    gap: 16px;
+  }
+  
+  .btn-eliminar-item {
+    grid-column: span 2; /* El tacho sigue flotando arriba libre */
+  }
+  
+  .item-controles-precio {
+    grid-column: span 2; /* Los controles ocupan todo el ancho abajo */
+  }
+}
+
 
 
 .total-pago span {
@@ -1810,7 +1842,7 @@ gap: 20px;
       auto;
 
     align-items:
-      center;
+      start;
 
     padding:
       15px;
@@ -1820,10 +1852,8 @@ gap: 20px;
   .item-checkout-card img {
 
     width:
-      85px;
+      125px;
 
-    height:
-      85px;
   }
 
 
@@ -1905,7 +1935,7 @@ gap: 20px;
       0 17px;
 
     font-size:
-      0.85rem;
+      1.85rem;
   }
 
 
