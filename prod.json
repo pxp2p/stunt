@@ -39,6 +39,71 @@
     "precio": 20000,
     "imagen": "prod/104.png",
     "colores": ["negro"]
+  },
+  {
+    "id":"105",
+    "nombre":"Manubrio Lunje",
+    "descripcion": "Manubrio Lunje de aluminio para bicicletas",
+    "precio": 0,
+    "imagen": "prod/105.png",
+    "colores": ["rojo"]
+  },
+  {
+    "id":"106",
+    "nombre":"Puños camuflaje",
+    "descripcion":"Puños de goma con diseño camuflaje (Consultar diseños disponibles)",
+    "precio": 10000,
+    "imagen": "prod/106.png",
+    "colores": ["verde", "rojo", "gris", "naranja", "negro", "azul", "amarillo", "verde lima", "rosa"]
+  },
+  {
+    "id":"107",
+    "nombre":"Puño con borde de color",
+    "descripcion": "Puños de goma para manubrios, con color en los bordes",
+    "precio": 5000,
+    "imagen": "prod/107.png",
+    "colores": ["rojo", "azul", "verde", "amarillo"]
+  },
+  {
+    "id":"108",
+    "nombre":"Luz con bocina (USB)",
+    "descripcion": "Luz con bocina integrada (USB)",
+    "precio": 12000,
+    "imagen": "prod/108.png",
+    "colores": ["negro"]
+  },
+  {
+    "id":"109",
+    "nombre":"Luz usb",
+    "descripcion": "Luz usb",
+    "precio": 8000,
+    "imagen": "prod/109.png",
+    "colores": ["rojo", "blanco"]
+  },
+  {
+    "id":"110",
+    "nombre":"Red pulpo",
+    "descripcion": "Red pulpo para bicicletas",
+    "precio": 8000,
+    "imagen": "prod/110.png",
+    "colores": ["rojo", "negro", "rojo", "amarillo", "verde"]
+  },
+  {
+    "id":"111",
+    "nombre":"Pata de apoyo",
+    "descripcion": "Pata de apoyo para bicicletas",
+    "precio": 10000,
+    "imagen": "prod/111.png",
+    "colores": ["negro"]
+  },
+  {
+    "id":"112",
+    "nombre":"Espejo retrovisor",
+    "descripcion": "Espejo retrovisor de plástico",
+    "precio": 5000,
+    "imagen": "prod/112.png",
+    "colores": ["negro"]
   }
+
   
 ]
