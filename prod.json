@@ -44,9 +44,9 @@
     "id":"105",
     "nombre":"Manubrio Lunje",
     "descripcion": "Manubrio Lunje de aluminio para bicicletas",
-    "precio": 0,
+    "precio": 41000,
     "imagen": "prod/105.png",
-    "colores": ["rojo"]
+    "colores": ["rojo","violeta"]
   },
   {
     "id":"106",
@@ -76,7 +76,7 @@
     "id":"109",
     "nombre":"Luz usb",
     "descripcion": "Luz usb",
-    "precio": 8000,
+    "precio": 5000,
     "imagen": "prod/109.png",
     "colores": ["rojo", "blanco"]
   },
