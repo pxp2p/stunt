@@ -86,7 +86,7 @@
     "descripcion": "Red pulpo para bicicletas",
     "precio": 8000,
     "imagen": "prod/110.png",
-    "colores": ["rojo", "negro", "rojo", "amarillo", "verde"]
+    "colores": ["rojo", "negro", "azul", "amarillo", "verde"]
   },
   {
     "id":"111",
